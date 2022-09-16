@@ -1,6 +1,7 @@
 package br.com.bruna.forum.controller.dto;
 
 import br.com.bruna.forum.modelo.Topico;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -36,7 +37,7 @@ public class TopicoDTO {
         return dataCriacao;
     }
 
-    public static List<TopicoDTO> converter(List<Topico> topicos) {
-        return topicos.stream().map(TopicoDTO::new).collect(Collectors.toList());
+    public static Page<TopicoDTO> converter(Page<Topico> topicos) {
+        return topicos.map(TopicoDTO::new);
     }
 }
