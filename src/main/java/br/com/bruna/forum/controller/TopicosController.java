@@ -12,7 +12,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+<<<<<<< HEAD
 import org.springframework.data.web.PageableDefault;
+=======
+>>>>>>> 79a1494bc6466b56e02b3f57dc749c6daefed7fb
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -37,7 +40,15 @@ public class TopicosController {
 
     @GetMapping
     public Page<TopicoDTO> listar(@RequestParam(required = false) String nomeCurso,
+<<<<<<< HEAD
                                   @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable paginacao) {
+=======
+                                  @RequestParam int pagina,
+                                  @RequestParam int qtd,
+                                  @RequestParam String ordenacao) {
+
+        Pageable paginacao = PageRequest.of(pagina,qtd, Sort.Direction.ASC, ordenacao);
+>>>>>>> 79a1494bc6466b56e02b3f57dc749c6daefed7fb
 
         if (nomeCurso == null) {
             Page<Topico> topicos = topicoRepository.findAll(paginacao);
